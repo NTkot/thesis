@@ -1,0 +1,4 @@
+bool static_calib_only
+---
+bool calib_valid
+geometry_msgs/TransformStamped calib

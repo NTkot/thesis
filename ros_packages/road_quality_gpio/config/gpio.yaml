@@ -1,0 +1,57 @@
+# EXAMPLE:
+# input_read_period_ms: 40
+# <GPIO_INPUT_PIN_NUMBER>:
+#   mode: input
+#   pud: up/down
+#   filter_size: <unsigned int>
+#   publish_mode: periodic/rising_falling/rising/falling
+# <GPIO_OUTPUT_PIN_NUMBER>:
+#   mode: output
+#   init: 0/1
+# <GPIO_PWM_PIN_NUMBER>:
+#   mode: pwm
+#   init_duty: <float> between 0 and 1
+#   init_freq: <unsigned int> (Hz)
+
+input_read_period_ms: 40
+5:
+  mode: output
+  init: 0
+6:
+  mode: output
+  init: 0
+19:
+  mode: output
+  init: 0
+26:
+  mode: output
+  init: 0
+21:
+  mode: input
+  pud: down
+  filter_size: 3
+  publish_mode: rising
+20:
+  mode: input
+  pud: down
+  filter_size: 3
+  publish_mode: rising
+16:
+  mode: input
+  pud: down
+  filter_size: 3
+  publish_mode: rising_falling
+25:
+  mode: input
+  pud: down
+  filter_size: 3
+  publish_mode: rising
+13:
+  mode: pwm
+  init_freq: 25000
+  init_duty: 0.5
+23:
+  mode: input
+  pud: down
+  filter_size: 3
+  publish_mode: periodic

@@ -1,0 +1,31 @@
+accelerometer:
+  sample_rate_div: 4  # Actual sample_rate = 1.125kHz / (1 + sample_rate_div)
+  scale: 0            # 0 -> 2G, 1 -> 4G, 2 -> 8G, 3 -> 16G
+  dlpf:
+    enable: 1
+    cutoff: 4         # 0 -> 246Hz (265Hz),   1 -> 246Hz (265Hz),
+                      # 2 -> 111.4Hz (136Hz), 3 -> 50.4Hz (68.8Hz),
+                      # 4 -> 23.9Hz (34.4Hz), 5 -> 11.5Hz (17Hz),
+                      # 6 -> 5.7Hz (8.3Hz),   7 -> 473Hz (499Hz)
+              
+gyroscope:
+  sample_rate_div: 4  # Actual sample_rate = 1.1kHz / (1 + sample_rate_div)
+  scale: 1            # 0 -> 250DPS, 1 -> 500DPS, 2 -> 1000DPS, 3 -> 2000DPS
+  dlpf:
+    enable: 1
+    cutoff: 4         # 0 -> 196.6Hz (229.8Hz), 1 -> 151.8Hz (187.6Hz),
+                      # 2 -> 119.5Hz (154.3Hz), 3 -> 51.2Hz (73.3Hz),
+                      # 4 -> 23.9Hz (35.9Hz),   5 -> 11.6Hz (17.8Hz),   
+                      # 6 -> 5.7Hz (8.9Hz),     7 -> 361.4Hz (376.5Hz)
+
+magnetometer:
+  mode: 3             # 0 -> poweroff, 1 -> single, 2 -> 10Hz,
+                      # 3 -> 20Hz,     4 -> 50Hz,   5 -> 100Hz, 
+                      # 6 -> self test
+
+ros:
+  pub_imu_hz: 100.0
+  pub_magn_hz: 20.0
+  pub_raw: 1
+  pub_static_calib: 1
+  pub_calib: 1

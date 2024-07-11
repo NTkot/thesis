@@ -1,0 +1,33 @@
+spin_ros_period_ms: 1
+plot_update_period_ms: 75
+
+gps_keep_last_msgs: 10
+imu_keep_last_msgs: 1000
+magn_keep_last_msgs: 200
+imu_autoclear: True
+imu_autoclear_ms: 1000
+
+blue_led_button:
+  pin: 25
+  pressed_enable: True
+  released_enable: False
+
+red_led_button:
+  pin: 16
+  pressed_enable: True
+  released_enable: True
+
+yellow_led_button:
+  pin: 20
+  pressed_enable: True
+  released_enable: False
+
+green_led_button:
+  pin: 21
+  pressed_enable: True
+  released_enable: False
+
+external_button:
+  pin: 23
+
+fan_control_pin: 13

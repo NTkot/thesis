@@ -1,0 +1,14 @@
+device: "/dev/ttyS0"
+baud_rate: 57600
+update_ms: 200
+gps_out:
+  gll: 0
+  rmc: 1
+  vtg: 0
+  gga: 0
+  gsa: 2
+  gsv: 0
+  antenna_status: 0
+sbas:
+  enabled: 1
+  mode: 0
