@@ -1,0 +1,95 @@
+doc_builder_format:
+  - name: 'lat'
+    var_path:
+      - ['gps', 'lat']
+    module: 'numpy'
+    function: ['mean']
+  - name: 'lon'
+    var_path:
+      - ['gps', 'lon']
+    module: 'numpy'
+    function: ['mean']
+  # - name: 'address'
+  #   var_path:
+  #     - ['gps']
+  #   module: 'store_db.doc_builder'
+  #   function: ['DocumentFeatures', 'address_info_osm']
+  - name: 'severity'
+    var_path:
+      - ['accel']
+      - ['gps']
+    module: 'store_db.doc_builder'
+    function: ['DocumentFeatures', 'accel_based_severity_info']
+  - name: 'rel_time'
+    var_path:
+      - ['time', 'rel']
+    module: 'store_db.doc_builder'
+    function: ['DocumentFeatures', 'rel_time_range']
+  - name: 'speed_kmh'
+    var_path:
+      - ['gps', 'speed']
+    module: 'numpy'
+    function: ['mean']
+  - name: 'length'
+    var_path:
+      - ['time', 'rel']
+      - ['gps', 'speed']
+    module: 'store_db.doc_builder'
+    function: ['DocumentFeatures', 'anomaly_length']
+
+doc_aggregator_format:
+  - name: 'lat'
+    module: 'numpy'
+    function: ['mean']
+  - name: 'lon'
+    module: 'numpy'
+    function: ['mean']
+  # - name: 'address'
+  #   module: 'store_db.doc_aggregator'
+  #   function: ['DocumentAggregations', 'combine_addresses']
+  - name: 'severity'
+    module: 'numpy'
+    function: ['mean']
+  - name: 'rel_time'
+    module: 'store_db.doc_aggregator'
+    function: ['DocumentAggregations', 'join']
+  - name: 'speed_kmh'
+    module: 'numpy'
+    function: ['mean']
+  - name: 'length'
+    module: 'numpy'
+    function: ['mean']
+
+mongo_options:
+#   server_options:
+#   clustering_options:
+#     distance_threshold: 2.0
+  store_options:
+    db: 'larisa_detect'
+    raw_collection: 'unclustered'
+    main_collection: 'clustered'
+
+preprocess:
+  accel:
+    wiener_window: 21
+    highpass_order: 4
+    highpass_freq: 3
+  gyro:
+    wiener_window: 21
+    highpass_order: 2
+    highpass_freq: 2
+
+detector:
+  module: 'data_process.detect.rule_based.envelope_threshold'
+  class: 'EnvelopeThreshold'
+  args:
+    start_value_threshold: 0.125
+    stop_value_threshold: 0.15
+    start_counter_threshold: 8
+    stop_counter_threshold: 11
+  var_path:
+    - ['accel', 'z']
+  ignore_ranges:
+    - [0, 100]
+    - [185906, 198500]
+    - [-101, -1]
