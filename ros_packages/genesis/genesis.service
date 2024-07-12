@@ -1,0 +1,15 @@
+[Unit]
+Description="Genesis"
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/home/rpi4/genesis/genesis.bash
+KillSignal=SIGINT
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
+
