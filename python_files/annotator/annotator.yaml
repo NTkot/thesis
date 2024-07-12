@@ -1,0 +1,9 @@
+play_button_period_ms: 70
+
+wiener_filter_size: 21
+moving_average_size: 1
+
+time_displayed_sec: 10
+
+previous_time_jump_sec: 0.1
+next_time_jump_sec: 0.1

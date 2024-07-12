@@ -1,0 +1,29 @@
+#!/bin/bash
+
+SOURCE=${BASH_SOURCE[0]}
+while [ -L "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
+  SOURCE=$(readlink "$SOURCE")
+  [[ $SOURCE != /* ]] && SOURCE=$DIR/$SOURCE # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+DIR=$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )
+
+rm -rf $DIR/pyinstaller
+
+if [ ! -d "$DIR/ann_venv" ]; then
+  echo -e "You need to create a python virtual environment with the necessary dependencies found in requirements.txt in order to run the pyinstaller script"
+  return 1
+else
+  echo -e "Found 'ann_venv' folder, assuming it is a python venv folder"
+fi
+
+source $DIR/ann_venv/bin/activate && \
+    $DIR/ann_venv/bin/pyinstaller --onefile \
+    --add-data $DIR/annotator.yaml:. \
+    --add-data $DIR/ui/annotator_icon.png:./ui/ \
+    --add-data $DIR/ui/play.png:./ui/ \
+    --specpath $DIR/pyinstaller/ \
+    --workpath $DIR/pyinstaller/build \
+    --distpath $DIR/pyinstaller/dist \
+    --name annotator \
+    --clean $DIR/main.py && cd pyinstaller/ && $DIR/ann_venv/bin/pyinstaller annotator.spec && cd .. && deactivate
