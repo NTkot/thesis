@@ -129,6 +129,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+python_files/annotator/ann_venv
 
 # Spyder project settings
 .spyderproject
