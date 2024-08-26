@@ -10,7 +10,7 @@ The implementation addresses several challenges of a real-world scenario, such a
 
 Finally, a logic for storing road anomalies in a database is presented that clusters its entries to extract a better estimate of the characteristics of a road defect that is met more than once in the data.
 
-
+Original text (in Greek) can be found [here](https://ikee.lib.auth.gr/record/356524/?ln=en).
 
 ## Dataset
 
