@@ -1,5 +1,9 @@
 # Detection and mapping of road surface damage using sensors and smart devices
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/a763b347-f43f-4f9c-9786-7c4c0e5a512d" width="900" align="center">
+</p>
+
 Α well-developed road network is essential for the efficient movement of people and goods. Therefore, maintenance of road networks is paramount to ensure their continued functionality and the economic and social wellbeing they support. When it comes to road maintenance, a necessary condition for optimal resource allocation is the mapping of the road condition. 
 
 In this work, an integrated system for road surface damage detection is presented. Τhe detection of anomalies is based on the vibrations received by a moving vehicle the moment it passes on top of a defect. The vibrations are sensed by an inertia measurement unit (IMU), while the geographic location of the damage is determined using a GPS sensor. 
